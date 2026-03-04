@@ -1,36 +1,172 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Movie Insight Builder
 
-## Getting Started
+## Overview
 
-First, run the development server:
+AI Movie Insight Builder is a full-stack web application that allows users to enter an IMDb movie ID and instantly view key movie information along with AI-generated audience sentiment insights.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+The application fetches movie metadata from the OMDb API and performs sentiment analysis based on audience ratings to provide a summarized insight about how audiences perceive the movie.
+
+---
+
+## Features
+
+* Enter an **IMDb movie ID**
+* Fetch movie data using **OMDb API**
+* Display:
+
+  * Movie poster
+  * Movie title
+  * Release year
+  * IMDb rating
+  * Cast
+  * Plot summary
+* AI-based audience sentiment analysis
+* Sentiment classification:
+
+  * Positive
+  * Mixed
+  * Negative
+* Input validation
+* Error handling
+* Responsive UI design
+
+---
+
+## Tech Stack
+
+### Frontend
+
+* Next.js (React framework)
+* TypeScript
+* Tailwind CSS
+
+### Backend
+
+* Next.js API Routes
+* Node.js runtime
+
+### API
+
+* OMDb API (Movie data)
+
+### Deployment
+
+* Vercel
+
+---
+
+## Project Structure
+
+```
+ai-movie-insight
+│
+├ app
+│   ├ api
+│   │   └ movie
+│   │        └ route.ts
+│   ├ globals.css
+│   ├ layout.tsx
+│   └ page.tsx
+│
+├ public
+├ .env.local
+├ package.json
+└ README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Setup Instructions
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Clone Repository
 
-## Learn More
+```
+git clone <repo-url>
+cd ai-movie-insight
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 2. Install Dependencies
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+npm install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 3. Add Environment Variables
 
-## Deploy on Vercel
+Create `.env.local`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+OMDB_API_KEY=your_api_key_here
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 4. Run Development Server
+
+```
+npm run dev
+```
+
+Open:
+
+```
+http://localhost:3000
+```
+
+---
+
+## How It Works
+
+1. User enters an IMDb ID.
+2. Frontend sends request to `/api/movie`.
+3. Backend fetches movie details from OMDb API.
+4. Sentiment logic analyzes IMDb rating.
+5. API returns:
+
+   * Movie details
+   * AI sentiment summary
+   * Sentiment classification.
+6. Frontend renders the movie insight card.
+
+---
+
+## Sentiment Logic
+
+Audience sentiment is estimated using IMDb rating:
+
+| Rating  | Sentiment |
+| ------- | --------- |
+| ≥ 7.5   | Positive  |
+| 5 – 7.4 | Mixed     |
+| < 5     | Negative  |
+
+This provides a quick insight into how audiences generally perceive the movie.
+
+---
+
+## Assumptions
+
+* IMDb rating is used as a proxy for audience sentiment.
+* OMDb API provides reliable movie metadata.
+* Users provide a valid IMDb ID.
+
+---
+
+## Future Improvements
+
+* Real AI sentiment analysis using LLM APIs
+* Audience review scraping
+* Movie search by title
+* Movie recommendations
+* Better UI animations
+* Advanced sentiment analytics
+
+---
+
+## Deployment
+
+The application is deployed using **Vercel** for easy hosting and scalability.
+
+---
+
+## Author
+
+Full-Stack Developer Internship Assignment Submission

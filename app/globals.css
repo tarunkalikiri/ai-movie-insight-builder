@@ -24,3 +24,85 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+@keyframes aurora {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-40%, -60%) rotate(180deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.aurora-bg {
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  background:
+    radial-gradient(circle at 30% 30%, #7c3aed, transparent 40%),
+    radial-gradient(circle at 70% 70%, #06b6d4, transparent 40%),
+    radial-gradient(circle at 50% 80%, #ec4899, transparent 40%);
+  filter: blur(120px);
+  animation: aurora 20s linear infinite;
+}
+/* Floating particles background */
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-40px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 0.6;
+  }
+}
+
+.particle {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: float 8s infinite ease-in-out;
+}
+
+.particle:nth-child(1) {
+  width: 6px;
+  height: 6px;
+  top: 20%;
+  left: 10%;
+}
+
+.particle:nth-child(2) {
+  width: 8px;
+  height: 8px;
+  top: 40%;
+  left: 80%;
+}
+
+.particle:nth-child(3) {
+  width: 5px;
+  height: 5px;
+  top: 70%;
+  left: 30%;
+}
+
+.particle:nth-child(4) {
+  width: 7px;
+  height: 7px;
+  top: 60%;
+  left: 60%;
+}
+
+.particle:nth-child(5) {
+  width: 6px;
+  height: 6px;
+  top: 30%;
+  left: 50%;
+}
