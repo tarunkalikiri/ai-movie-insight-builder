@@ -64,24 +64,26 @@ backgroundImage:
 
 {/* Content */}
 
-<div className="relative z-10 flex flex-col items-center">
+<div className="relative z-10 flex flex-col items-center px-4">
 
-<h1 className="text-5xl font-bold mb-10 text-center">
+<h1 className="text-4xl md:text-5xl font-bold mb-10 text-center">
 🎬 AI Movie Insight Builder
 </h1>
 
-<div className="backdrop-blur-md bg-white/10 border border-white/20 p-6 rounded-xl shadow-xl flex gap-4">
+{/* Search Box */}
+
+<div className="backdrop-blur-md bg-white/10 border border-white/20 p-4 rounded-xl shadow-xl flex gap-3">
 
 <input
-className="px-4 py-2 rounded-lg text-black w-[280px]"
-placeholder="Search movie (RRR, Baahubali, Matrix)"
+className="px-4 py-2 rounded-lg w-[200px] md:w-[280px] text-white placeholder-gray-300 bg-black/40 border border-white/30 outline-none"
+placeholder="Search movie (RRR, Matrix)"
 value={query}
 onChange={(e)=>setQuery(e.target.value)}
 />
 
 <button
 onClick={searchMovie}
-className="bg-purple-600 px-5 py-2 rounded-lg hover:bg-purple-700 transition"
+className="bg-purple-600 px-4 py-2 rounded-lg hover:bg-purple-700 transition"
 >
 Search
 </button>
@@ -94,25 +96,33 @@ Loading movie insight...
 </p>
 )}
 
+{/* Movie Result */}
+
 {movie && (
 
 <motion.div
 initial={{opacity:0,y:40}}
 animate={{opacity:1,y:0}}
 transition={{duration:0.5}}
-className="bg-white text-black rounded-xl shadow-2xl max-w-4xl grid grid-cols-2 gap-6 p-6 mt-10"
+className="bg-white text-black rounded-xl shadow-2xl max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-6 p-6 mt-10"
 >
+
+{/* Poster */}
 
 <img
 src={movie.movie.Poster}
-className="rounded-lg"
+className="rounded-lg w-full md:w-auto"
 />
+
+{/* Movie Details */}
 
 <div className="space-y-4">
 
-<h2 className="text-3xl font-bold">
+<h2 className="text-2xl md:text-3xl font-bold">
 {movie.movie.Title}
 </h2>
+
+{/* Rating Bar */}
 
 <div>
 
@@ -142,6 +152,8 @@ style={{width:`${movie.movie.imdbRating * 10}%`}}
 <p>
 {movie.movie.Plot}
 </p>
+
+{/* AI Insight */}
 
 <div className="bg-gray-100 p-4 rounded-lg">
 
@@ -180,6 +192,8 @@ Sentiment: {movie.sentiment}
 </p>
 
 </div>
+
+{/* IMDb Button */}
 
 <a
 href={`https://www.imdb.com/title/${movie.movie.imdbID}`}
